@@ -8,7 +8,7 @@ import { FileService } from '../file.service';
     <input type="file" accept="application/json"
     (change)="fileChanged($event)"
     class="file-input file-input-bordered w-full max-w-xs">
-    <button class="btn btn-primary ml-2" (click)="uploadFile()">Upload</button>
+    <button class="btn btn-primary mt-2 btn-block" (click)="uploadFile()">Upload</button>
   `,
   styles: ``
 })
@@ -42,6 +42,7 @@ export class FileUploaderComponent {
       const file = fileReader.result ? JSON.parse(fileReader.result.toString()) : null;
       if (file) {
         this.fileService.setFile(file);
+        this.fileService.proceedToEditor();
       }
     }
     fileReader.readAsText(this.file);

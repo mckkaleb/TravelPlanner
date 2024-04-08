@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
 /**
  * Provides a service for managing a file represented as JSON data.
@@ -10,6 +11,11 @@ import { Injectable } from '@angular/core';
 })
 export class FileService {
   private _file: JSON = JSON.parse('{}');
+  private router: Router;
+
+  constructor(router: Router) {
+    this.router = router;
+  }
 
   /**
  * Sets the file represented as a JSON object.
@@ -27,5 +33,12 @@ export class FileService {
  */
   getFile() {
     return this._file;
+  }
+
+  /**
+ * Navigates to the editor route.
+ */
+  proceedToEditor() {
+    this.router.navigate(['/editor']);
   }
 }

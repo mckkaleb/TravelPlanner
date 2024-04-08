@@ -1,0 +1,38 @@
+<form class="form-control p-4">
+    <h3 class="text-lg">Add a block</h3>
+
+    <label class="label">
+        <span class="label-text">Block Type</span>
+    </label>
+
+    <select class="select select-bordered w-full max-w-xs" name="blockType" [(ngModel)]="blockType">
+        <option disabled selected>Select block type</option>
+        <option>Activity</option>
+        <option>Transportation</option>
+        <option>Accomodation</option>
+        <option>Other</option>
+    </select>
+
+    <label class="label">
+        <span class="label-text">Title</span>
+    </label>
+
+    <input type="text" placeholder="Title" name="title" class="input input-bordered w-full max-w-xs"
+        [(ngModel)]="title" />
+
+    <label class="label">
+        <span class="label-text">Cost</span>
+    </label>
+
+    <input type="number" placeholder="Cost" name="cost" class="input input-bordered w-full max-w-xs"
+        [(ngModel)]="cost" />
+
+    <label class="label">
+        <span class="label-text">Description</span>
+    </label>
+
+    <textarea name="description" class="textarea textarea-bordered max-w-xs" placeholder="Description"
+        [(ngModel)]="description"></textarea>
+
+    <button class="btn btn-primary w-fit mt-2">Submit</button>
+</form>
