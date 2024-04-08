@@ -1,0 +1,27 @@
+<dialog class="modal" [open]="modalOpen">
+    <div class="modal-box">
+        <app-add-block></app-add-block>
+        <div class="modal-action">
+            <button class="btn" (click)="toggleModal()">Close</button>
+        </div>
+    </div>
+</dialog>
+
+<div class="md:grid md:grid-cols-7">
+    <div class="col-span-2">
+        <!-- content for column 1 -->
+        <app-title-editor title="Test title"></app-title-editor>
+    </div>
+
+    <div class="col-span-2">
+        <!-- content for column 2 -->
+        <app-budget-editor></app-budget-editor>
+    </div>
+    <div class="py-2 px-4">
+        <button class="btn btn-secondary" (click)="toggleModal()">Add Block</button>
+    </div>
+    <div class="py-2 px-4 col-span-2 join">
+        <button class="btn btn-accent join-item">Save plan locally</button>
+        <button class="btn btn-neutral join-item">Download or print</button>
+    </div>
+</div>
