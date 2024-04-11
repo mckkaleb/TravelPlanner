@@ -1,27 +1,44 @@
+<script src="print.js"></script>
+
 <dialog class="modal" [open]="modalOpen">
     <div class="modal-box">
-        <app-add-block></app-add-block>
+        <app-add-block (blockAddedEvent)="addBlock($event)"></app-add-block>
         <div class="modal-action">
             <button class="btn" (click)="toggleModal()">Close</button>
         </div>
     </div>
 </dialog>
 
-<div class="md:grid md:grid-cols-7">
-    <div class="col-span-2">
-        <!-- content for column 1 -->
-        <app-title-editor title="Test title"></app-title-editor>
+<div class="md:grid md:grid-cols-4 sticky top-0">
+    <div class="col-span-3 md:join">
+        <app-title-editor [title]="title" (titleChanged)="setTitle($event)"></app-title-editor>
+        <app-budget-editor [budget]="budget" (budgetChanged)="setBudget($event)"></app-budget-editor>
+        <button class="btn btn-secondary" style="margin-top: 7px;" (click)="toggleModal()">Add Block</button>
     </div>
 
-    <div class="col-span-2">
-        <!-- content for column 2 -->
-        <app-budget-editor></app-budget-editor>
-    </div>
-    <div class="py-2 px-4">
-        <button class="btn btn-secondary" (click)="toggleModal()">Add Block</button>
-    </div>
-    <div class="py-2 px-4 col-span-2 join">
-        <button class="btn btn-accent join-item">Save plan locally</button>
-        <button class="btn btn-neutral join-item">Download or print</button>
+    <div class="py-2 px-4 join">
+        <button class="btn btn-accent join-item" (click)="savePlan()">Save plan locally</button>
+        <button class="btn btn-neutral join-item" printSectionId="plan" [useExistingCss]="true" ngxPrint>Download or print</button>
     </div>
 </div>
+
+<section class="px-4 mt-5" id="plan">
+    <div class="md:grid md:grid-cols-4">
+        <div class="col-span-3">
+            <h1 class="text-3xl">Your Plan</h1>
+            @for (block of blocks; track $index) {
+                <app-block
+                    [block]="block"
+                    (delete)="removeBlock($event)">
+                </app-block>
+            }
+        </div>
+        <div>
+            <div class="stats stats-vertical">
+                <app-stat title="Total cost" [statValue]="totalCost" 
+                    [description]="planInBudget ? 'In budget' : 'Over budget'">$</app-stat>
+                <app-stat title="Blocks" [statValue]="blocks.length ? blocks.length : 0"></app-stat>
+            </div>
+        </div>
+    </div>
+</section>

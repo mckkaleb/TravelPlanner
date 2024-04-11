@@ -6,6 +6,9 @@ import { SharedModule } from '../shared/shared.module';
 import { PlanEditorComponent } from './plan-editor/plan-editor.component';
 import { TitleEditorComponent } from './title-editor/title-editor.component';
 import { BudgetEditorComponent } from './budget-editor/budget-editor.component';
+import { BlockComponent } from './block/block.component';
+import { StatComponent } from './stat/stat.component';
+import { NgxPrintModule } from 'ngx-print';
 
 
 
@@ -14,12 +17,15 @@ import { BudgetEditorComponent } from './budget-editor/budget-editor.component';
     AddBlockComponent,
     PlanEditorComponent,
     TitleEditorComponent,
-    BudgetEditorComponent
+    BudgetEditorComponent,
+    BlockComponent,
+    StatComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
-    SharedModule
+    SharedModule,
+    NgxPrintModule
   ],
   exports: [
     PlanEditorComponent

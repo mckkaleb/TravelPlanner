@@ -21,3 +21,12 @@ export class Block {
         this.description = description;
     }
 }
+
+/**
+ * Checks if the given object is an instance of the `Block` class.
+ * @param obj The object to check.
+ * @returns `true` if the object is an instance of `Block`, `false` otherwise.
+ */
+export function isBlock(obj: any): obj is Block {
+    return obj && obj.title && obj.type && typeof obj.cost === 'number' && obj.description;
+}

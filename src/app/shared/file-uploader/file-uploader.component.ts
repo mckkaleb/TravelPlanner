@@ -40,9 +40,11 @@ export class FileUploaderComponent {
     const fileReader = new FileReader();
     fileReader.onload = e => {
       const file = fileReader.result ? JSON.parse(fileReader.result.toString()) : null;
-      if (file) {
+      if (file && this.fileService.validateFile(file)) {
         this.fileService.setFile(file);
         this.fileService.proceedToEditor();
+      } else {
+        alert("Invalid file provided");
       }
     }
     fileReader.readAsText(this.file);

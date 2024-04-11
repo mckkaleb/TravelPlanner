@@ -5,7 +5,7 @@
                 Budget $
                 <input type="number" class="grow" placeholder="Budget amount" [(ngModel)]="budget" name="budget"/>
             </label>
-            <button class="btn btn-success join-item">Save</button>
+            <button class="btn btn-success join-item" (click)="onSubmit()">Save</button>
         </div>
     </form>
 </div>

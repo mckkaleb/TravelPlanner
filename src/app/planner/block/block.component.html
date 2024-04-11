@@ -1,0 +1,10 @@
+<div class="card w-full">
+    <div class="card-body">
+        <h2 class="card-title">{{block?.title}}</h2>
+        <p>Cost: ${{block?.cost}} | {{block?.type}}</p>
+        <p>{{block?.description}}</p>
+        <div class="card-actions justify-end no-print">
+            <button class="btn btn-error" (click)="deleteBlock()">Delete</button>
+        </div>
+    </div>
+</div>
