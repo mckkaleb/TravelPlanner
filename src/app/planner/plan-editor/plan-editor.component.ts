@@ -36,6 +36,7 @@ export class PlanEditorComponent {
 
   modalOpen: boolean = false
   printing: boolean = false
+  showAlert: boolean = false
 
   planService: PlanService
   fileService: FileService
@@ -84,6 +85,11 @@ export class PlanEditorComponent {
   setTitle(newTitle: string) {
     this.title = newTitle
     this.planService.setTitle(newTitle)
+
+    this.showAlert = true
+    setTimeout(() => {
+      this.showAlert = false
+    }, 3000)
   }
 
   /**
@@ -93,6 +99,11 @@ export class PlanEditorComponent {
   setBudget(newBudget: number) {
     this.budget = newBudget
     this.planService.setBudget(newBudget)
+
+    this.showAlert = true
+    setTimeout(() => {
+      this.showAlert = false
+    }, 3000);
   }
 
   /**

@@ -5,7 +5,7 @@ import { Component, Input, input } from '@angular/core';
   template: `
     <div class="stat">
       <div class="stat-title">{{ title }}</div>
-      <div class="stat-value"><ng-content></ng-content>{{ statValue }}</div>
+      <div class="stat-value"><ng-content></ng-content>{{ statValue | number: '1.0-2' }}</div>
       <div class="stat-desc">{{ description }}</div>
     </div>
   `,
