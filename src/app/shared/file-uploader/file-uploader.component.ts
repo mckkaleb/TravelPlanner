@@ -37,16 +37,24 @@ export class FileUploaderComponent {
  * This method reads the contents of the selected file using a `FileReader`, parses the contents as JSON, and then sets the parsed file data in the `FileService`.
  */
   uploadFile() {
-    const fileReader = new FileReader();
-    fileReader.onload = e => {
-      const file = fileReader.result ? JSON.parse(fileReader.result.toString()) : null;
-      if (file && this.fileService.validateFile(file)) {
-        this.fileService.setFile(file);
-        this.fileService.proceedToEditor();
-      } else {
-        alert("Invalid file provided");
+    try {
+      const fileReader = new FileReader();
+      fileReader.onload = e => {
+        const file = fileReader.result ? JSON.parse(fileReader.result.toString()) : null;
+        if (file && this.fileService.validateFile(file)) {
+          this.fileService.setFile(file);
+          this.fileService.proceedToEditor();
+        } else {
+          alert("Invalid file provided");
+        }
       }
+      if ((this.file as File).name.endsWith(".json")) {
+        fileReader.readAsText(this.file);
+      } else {
+        throw new Error("Invalid file provided");
+      }
+    } catch (err) {
+      alert("Invalid file provided");
     }
-    fileReader.readAsText(this.file);
   }
 }
