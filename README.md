@@ -5,6 +5,10 @@ Keep track of your travel plans and expenses
 Written in Angular, this project allows you to add items to a travel plan, which can be saved to be edited later, as well
 as be downloaded as a PDF or printed.
 
+## Live demo
+
+[https://mckkaleb.github.io/TravelPlanner](https://mckkaleb.github.io/TravelPlanner)
+
 ## Running Locally
 
 1. Ensure your computer has node version 18.13 or newer.
